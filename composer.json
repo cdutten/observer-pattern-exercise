@@ -1,6 +1,6 @@
 {
-    "name": "cdutten/design-patterns-exercises",
-    "description": "different exercises that i want to solve with design patterns",
+    "name": "cdutten/observer-pattern-exercise",
+    "description": "Observer pattern exercise",
     "type": "project",
     "require-dev": {
         "ext-mbstring": "*",
