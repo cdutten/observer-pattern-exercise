@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Observer;
 
+use BadMethodCallException;
 use Mockery;
 use Cdutten\Observer\Displays\Observer;
 use Cdutten\Observer\WeatherData;
@@ -84,5 +85,17 @@ class WeatherDataTest extends TestCase
 
         $this->assertArrayNotHasKey(spl_object_hash($observer), $property->getValue($weatherData));
         $this->assertNull(($property->getValue($weatherData))[spl_object_hash($observer)]);
+    }
+
+    /**
+     * Test trying to remove a unregistered Observer
+     *
+     * @expectedException BadMethodCallException
+     */
+    public function testRemoveUnknownObserver()
+    {
+        $observer = Mockery::mock(Observer::class);
+        $weatherData = new WeatherData();
+        $weatherData->removeObserver($observer);
     }
 }

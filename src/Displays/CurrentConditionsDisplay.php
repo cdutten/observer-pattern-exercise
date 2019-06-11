@@ -27,7 +27,7 @@ class CurrentConditionsDisplay implements Observer
      */
     public function display()
     {
-        return 'Temperature: ' . $this->state['temperature'] . PHP_EOL .
+        echo 'Temperature: ' . $this->state['temperature'] . PHP_EOL .
             'Humidity: ' . $this->state['humidity'] . PHP_EOL .
             'Pressure: ' . $this->state['pressure'];
     }

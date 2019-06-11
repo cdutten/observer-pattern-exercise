@@ -9,7 +9,7 @@ trait ObservableTrait
     /**
      * @var Observer[] $observers
      */
-    private $observers;
+    private $observers = [];
 
     /**
      * Add an Observer
@@ -30,6 +30,9 @@ trait ObservableTrait
      */
     public function removeObserver(Observer $observer): void
     {
+        if (!key_exists(spl_object_hash($observer), $this->observers)) {
+            throw new \BadMethodCallException('The observer isn\'t registered');
+        }
         unset($this->observers[spl_object_hash($observer)]);
     }
 
